@@ -2,6 +2,7 @@
 import userModel from "../models/userModel.js";
 import {comparePassword, hashPassword} from "../helpers/authHelper.js";
 import JWT from "jsonwebtoken"
+
 export const registerController = async (req, res) =>{
     try{
 const {name, email, password, phone, address} = req.body;
@@ -38,7 +39,7 @@ const existingUser = await userModel.findOne({email});
      return res.status(200).send({
          success:false,
          messange : "Already Register please login",
-     })
+     });
  }   
  //register User
  const hashedPassword = await hashPassword(password);
@@ -94,6 +95,7 @@ const token = await JWT.sign({_id : user._id}, process.env.JWT_SECRET, {expiresI
         success:true,
         message:"login successfully",
         user : {
+            _id : user._id,
             name :user.name,
             email:user.email,
             phone: user.phone,
@@ -109,6 +111,10 @@ token,
             success:false,
             message:"Email in not registered",
             error,
-        })
+        });
     }
 };
+// test controller
+export const testController = (req, res) =>{
+ res.send("protected route");
+}
