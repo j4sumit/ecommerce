@@ -15,7 +15,7 @@ router.post('/register', registerController);
 router.post('/login', loginController);
 
 // test Routes
-router.get('/test', requireSignIn,isAdmin,testController);
+router.get('/test', requireSignIn, isAdmin, testController);
 
 
 

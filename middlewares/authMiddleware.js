@@ -33,5 +33,10 @@ else{
 }
     catch(error){
 console.log(error);        
+res.status(401).send({
+    status:false,
+    error,
+    message : "erron in middleware"
+})
     }
 };
