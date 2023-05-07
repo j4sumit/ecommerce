@@ -82,6 +82,14 @@ background: linear-gradient(to right, #434343, #000000);
   color: white;
 }
 
+/* ****************** Register Page ************************* */
+.register{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  flex-direction: column;
+}
 
 
 
