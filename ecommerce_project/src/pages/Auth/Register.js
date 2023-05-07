@@ -4,13 +4,13 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import "../../styles/AuthStyles.css";
-const Rejister = () => {
+const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
-    const navigate = useNavigate;
+    const navigate = useNavigate();
 
 
     //form function to stop refreshing page
@@ -18,7 +18,7 @@ const Rejister = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("/api/v1/auth/register", { name, email, password, phone, address });
+            const res = await axios.post("/api/v1/auth/register", { name, email, password, phone, address, });
             if(res && res.data.success){
                 toast.success(res.data && res.data.message);
                 navigate('/login');
@@ -34,7 +34,7 @@ const Rejister = () => {
 
     return (
         <Layout title="Registe- Ecommerce App">
-            <div className='form-container' style={{ minHeight: "90vh" }}>
+            <div className='form-container' >
                 <form onSubmit={handleSubmit}>
                 <h4 className="title">REGISTER FORM</h4>
                     <div className="mb-3">    
@@ -98,4 +98,4 @@ const Rejister = () => {
     );
 };
 
-export default Rejister;
+export default Register;

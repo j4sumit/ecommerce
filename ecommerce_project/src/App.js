@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage'
 import Pagenotfound from './pages/Pagenotfound';
 import About from './pages/About';
 import Policy from './pages/Policy';
-import Register from './pages/Auth/Rejister';
+import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
 
 import { ToastContainer} from 'react-toastify';

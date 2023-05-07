@@ -1,4 +1,3 @@
-
 import userModel from "../models/userModel.js";
 import {comparePassword, hashPassword} from "../helpers/authHelper.js";
 import JWT from "jsonwebtoken"
@@ -44,7 +43,7 @@ const existingUser = await userModel.findOne({email});
  //register User
  const hashedPassword = await hashPassword(password);
  //save
- const user = await new userModel({name, email, phone, address, password:hashedPassword}).save();
+ const user = await new userModel({name, email, phone, address, password:hashedPassword,}).save();
 res.status(201).send({
     success:true,
     message:"User Register successfully",
@@ -116,5 +115,11 @@ token,
 };
 // test controller
 export const testController = (req, res) =>{
- res.send("protected route");
+ try{
+     res.send("protected route");
+}
+catch(error){
+    console.log(error);
+    res.send({error});
+}
 }

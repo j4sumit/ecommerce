@@ -31,13 +31,13 @@ app.use('/api/v1/auth',authRoutes);
 //rest api
 
 app.get('/', (req, res)=> {
-    res.send('<h1>welocome to ecommerce project</h1>');
-})
+    res.send('<h1>welocome to ecommerce App</h1>');
+});
 
 //port
 const PORT = process.env.PORT || 8080;
 
 //RUN LISTEN
     app.listen(PORT, ()=>{
-        console.log(`server running on mode ${process.env.DEV_MODE} and PORT on ${PORT}`.bgCyan.white)
+        console.log(`server running on mode ${process.env.DEV_MODE} and PORT on ${PORT}`.bgCyan.white);
     })
