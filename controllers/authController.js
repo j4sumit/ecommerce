@@ -10,23 +10,23 @@ const {name, email, password, phone, address} = req.body;
 
 if(!name)
 {
-    return res.send({error: "Name is required"});
+    return res.send({message: "Name is required"});
 }
 if(!email)
 {
-    return res.send({error: "Email is required"});
+    return res.send({message: "Email is required"});
 }
 if(!password)
 {
-    return res.send({error: "Passwoed is required"});
+    return res.send({message: "Passwoed is required"});
 }
 if(!phone)
 {
-    return res.send({error: "phone number is required"});
+    return res.send({message: "phone number is required"});
 }
 if(!address)
 {
-    return res.send({error: "assress  is required"});
+    return res.send({message: "assress  is required"});
 }
 
 
