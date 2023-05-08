@@ -19,7 +19,7 @@ if(res.data.ok){
 }
 }
 if(auth?.token) authCheck();
-},[auth?.token])
+}, [auth?.token])
 
  return ok? <Outlet/> : <Spinner/>;
 }

@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
         user: parseData.user,
         token: parseData.token,
       });
-    }// eslint-disable-mext-link
+    }// eslint-disable-next-link
   }, []);
   return (
     <AuthContext.Provider value={[auth, setAuth]}>

@@ -122,4 +122,4 @@ catch(error){
     console.log(error);
     res.send({error});
 }
-}
+};
