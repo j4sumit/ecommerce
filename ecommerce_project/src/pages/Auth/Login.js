@@ -8,9 +8,9 @@ import { useAuth } from '../../context/auth';
 
 const Login = () => {
 
-    
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    
     const [auth, setAuth] =useAuth();
     const navigate = useNavigate();
     const location = useLocation();
@@ -20,7 +20,7 @@ const Login = () => {
         e.preventDefault();
         try {
             const res = await axios.post("/api/v1/auth/login", 
-            { email, password,});
+            { email, password, });
             if(res && res.data.success){
                 toast.success(res.data && res.data.message);
                 setAuth({
@@ -58,14 +58,18 @@ const Login = () => {
 
                     <div className="mb-3">
                         <input type="password"
-                            value={password}
+                            value={Password}
                             onChange={(e) => setPassword(e.target.value)}
                             className="form-control"
                             id="exampleInputPassword"
                             placeholder='Enter your password'
                             required />
                     </div>
-                    <button type="submit" className="btn btn-primary">LOGIN</button>
+                    <button type="submit" className="btn btn-primary"
+                    onClick={()=>{
+                        navigate("/forgot-password");
+                    }}>LOGIN</button>
+                    <button type="button" className="btn btn-primary">Forgot Password</button>
                 </form>
 
 
