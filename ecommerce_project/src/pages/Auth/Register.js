@@ -95,7 +95,7 @@ const Register = () => {
                             onChange={(e) => setAnswer(e.target.value)}
                             className="form-control"
                             
-                            placeholder='what is your favorite sports'
+                            placeholder='Enter your nich-Name'
                             required />
                     </div>
 
