@@ -102,6 +102,7 @@ const token = await JWT.sign({_id : user._id}, process.env.JWT_SECRET, {expiresI
             email:user.email,
             phone: user.phone,
             address:user.address,
+            role:user.role,
         },
 token,
     });
