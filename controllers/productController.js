@@ -72,3 +72,28 @@ export const getProductController = async (req, res) => {
     }
   };
   
+// get single product
+
+
+
+export const getSingleProductController = async (req, res) => {
+    try {
+      const products = await productModel
+        .findOne({slug : req.params.slug})
+        .select("-photo")
+      .populate("category");
+
+      res.status(200).send({
+        success: true,
+        message: "single product Fetched ",
+        products,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        success: false,
+        message: "Erorr while getting single product",
+        error,
+      });
+    }
+  };
