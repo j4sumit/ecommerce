@@ -3,7 +3,7 @@ import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
-import "../../styles/AuthStyles.css";
+import "../../Styles/AuthStyles.css";
 import { useAuth } from "../../context/auth";
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -66,8 +66,17 @@ const Login = () => {
               required
             />
           </div>
+
+
           <div className="mb-3">
-            <button
+          <button 
+          type="submit" 
+          className="btn btn-primary">
+            LOGIN
+          </button>
+          </div>
+
+          <button
               type="button"
               className="btn btn-primary"
               onClick={() => {
@@ -76,11 +85,8 @@ const Login = () => {
             >
               Forgot Password
             </button>
-          </div>
 
-          <button type="submit" className="btn btn-primary">
-            LOGIN
-          </button>
+
         </form>
       </div>
     </Layout>
