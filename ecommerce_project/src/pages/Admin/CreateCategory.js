@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect,useState } from "react";
 import Layout from "./../../components/Layout/Layout";
 import AdminMenu from "./../../components/Layout/AdminMenu";
 import toast from "react-hot-toast";
 import axios from "axios";
 import CategoryForm from "../../components/Form/CategoryForm";
 import { Modal } from "antd";
-
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
@@ -28,47 +27,50 @@ const CreateCategory = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("something went wrong in input form");
+      // toast.error("somthing went wrong in input form");
     }
   };
-  // get all category
+
+
+  //get all cat
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get("/api/v1/category/get-category");
-      if (data.success) {
-        setCategories(data.category);
+      if (data?.success) {
+        setCategories(data?.category);
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong in gettig category");
+      toast.error("Something wwent wrong in getting catgeory");
     }
   };
+
 
   useEffect(() => {
     getAllCategory();
   }, []);
 
-  // update category
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await axios.put(
-        `/api/v1/category/update-category/${selected._id}`,
-        { name: updatedName }
-      );
-      if (data.success) {
-        toast.success(`${updatedName} is updated`);
-        setSelected(null);
-        setUpdatedName("");
-        setVisible(false);
-        getAllCategory();
-      } else {
-        toast.error(data.message);
-      }
-    } catch (error) {
-      toast.error("Something went wrong");
+//update category
+const handleUpdate = async (e) => {
+  e.preventDefault();
+  try {
+    const { data } = await axios.put(
+      `/api/v1/category/update-category/${selected._id}`,
+      { name: updatedName }
+    );
+    if (data?.success) {
+      toast.success(`${updatedName} is updated`);
+      setSelected(null);
+      setUpdatedName("");
+      setVisible(false);
+      getAllCategory();
+    } else {
+      toast.error(data.message);
     }
-  };
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   //delete category
   const handleDelete = async (pId) => {
@@ -112,6 +114,7 @@ const CreateCategory = () => {
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
+                
                 <tbody>
                   {categories?.map((c) => (
                     <>
@@ -141,11 +144,12 @@ const CreateCategory = () => {
                     </>
                   ))}
                 </tbody>
-              </table>
+                 </table>
             </div>
-            <Modal onCancel={() => setVisible(false)}
+            <Modal 
+            onCancel={() => setVisible(false)}
               footer={null}
-              visibe={visible}
+              visible={visible}
               >
               <CategoryForm
                 value={updatedName}
@@ -161,3 +165,4 @@ const CreateCategory = () => {
 };
 
 export default CreateCategory;
+
